@@ -32,6 +32,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Vector2.Distance(player.position, endPos) < rangeToDestroyObject)
         {
             GenerateMap();
+            //GenerateGold();
         }
         GameObject getOneGround = listGroundOld.FirstOrDefault();
         if (getOneGround != null && Vector2.Distance(player.position, getOneGround.transform.position) > rangeToDestroyObject)
@@ -40,7 +41,16 @@ public class NewBehaviourScript : MonoBehaviour
             Destroy(getOneGround);
         }
 
-        //foreach(GameObject gold in  listGroundOld.ToList())
+        //GameObject getOneGold = listGoldOld.FirstOrDefault();
+        //if (getOneGold != null && Vector2.Distance(player.position, getOneGold.transform.position) > rangeToDestroyObject)
+        //{
+        //    listGoldOld.Remove(getOneGold);
+        //    Destroy(getOneGold);
+        //}
+
+
+
+        //foreach (GameObject gold in listGroundOld.ToList())
         //{
         //    if (gold != null && Vector2.Distance(player.position, gold.transform.position) > rangeToDestroyObject)
         //    {
@@ -75,8 +85,32 @@ public class NewBehaviourScript : MonoBehaviour
     //        }
     //    }
     //}
+    //private void GenerateGold()
+    //{
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        float khoangcachGold = Random.Range(2f, 5f); // khoang cach ngau nhien giua cac coin
+    //        nextPos = new Vector3(endPos.x + khoangcachGold, -2f, 0f);
 
-    
+    //        //tao so nguyen ngau nhien trong khoang tu a-b, ko bao gom b
+    //        int goldID = Random.Range(0, listGold.Count);
+
+    //        //tao ra block ban do ngau nhien
+    //        GameObject newGold = Instantiate(listGold[goldID], nextPos, Quaternion.identity, transform);
+    //        listGoldOld.Add(newGold); //THêm coin vừa tạo vào mảng
+
+    //        switch (goldID)
+    //        {
+    //            case 0: goldLen = 1; break;
+    //            case 1: goldLen = 1; break;
+    //        }
+
+    //        endPos = new Vector3(nextPos.x + goldLen, -2f, 0f);
+    //    }
+    //}
+
+
+
 
     private void GenerateMap()
     {

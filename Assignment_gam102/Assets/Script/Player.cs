@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -20,9 +21,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     private bool isGrounded;
 
+    public Text Diem;
+    int Score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        Diem = GameObject.Find("Diem").GetComponent<Text>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -36,6 +41,16 @@ public class PlayerMove : MonoBehaviour
         CollisionCheck();
         AnimatorController();
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("va cham vao: " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Coin")
+        {
+            Score++;
+            Destroy(collision.gameObject);
+            Diem.text = "Coin: " + Score.ToString();
+        }
     }
 
     private void AnimatorController()
